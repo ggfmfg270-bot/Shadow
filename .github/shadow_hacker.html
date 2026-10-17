@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#020604">
+<title>SHADOW HACKER</title>
+<style>
+:root{--green:#00ff75;--dim:#65b98a;--line:#155b35;--bg:#020604}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#092014 0%,#020604 52%);color:var(--green);font-family:Consolas,Monaco,monospace;padding:12px;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.08;background:repeating-linear-gradient(0deg,transparent 0 3px,#00ff75 4px,transparent 5px 7px);z-index:10}
+header{position:relative;text-align:center;border:1px solid var(--green);padding:15px 8px;border-radius:12px;box-shadow:0 0 20px #00ff7525,inset 0 0 20px #00ff7510;background:#031008cc}
+.brand{font-size:clamp(23px,6vw,34px);letter-spacing:5px;text-shadow:0 0 12px var(--green);margin:7px 0}
+.sub{font-size:10px;color:var(--dim);letter-spacing:2px}
+.pill{display:inline-block;border:1px solid var(--line);padding:4px 8px;border-radius:20px;font-size:10px;margin-top:8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.panel{position:relative;min-width:0;border:1px solid var(--line);border-radius:10px;padding:10px;background:linear-gradient(145deg,#06170d,#020805);box-shadow:0 0 12px #00ff7510;overflow:hidden}
+.panel h3{font-size:11px;letter-spacing:1px;margin:0 0 10px;color:#8cffb5;font-weight:600}
+.camera{height:115px;background:linear-gradient(140deg,#14261b,#030906);border:1px solid #214b31;position:relative;overflow:hidden}
+.camera:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 4px,#8affae17 5px 6px)}
+.cam-scene{position:absolute;inset:0;background:linear-gradient(90deg,transparent 49%,#80ffad18 50%,transparent 51%),linear-gradient(0deg,transparent 49%,#80ffad18 50%,transparent 51%);background-size:25px 25px}
+.cam-hall{position:absolute;left:27%;right:27%;top:8%;bottom:0;border-left:1px solid #65b98a66;border-right:1px solid #65b98a66;transform:perspective(80px) rotateX(4deg)}
+.cam-door{position:absolute;left:39%;right:39%;top:28%;bottom:0;border:1px solid #65b98a88}
+.scanline{height:2px;background:#00ff75;box-shadow:0 0 8px #00ff75;position:absolute;left:0;right:0;animation:scan 3s linear infinite}
+@keyframes scan{0%{top:0}100%{top:100%}}
+.corner{position:absolute;width:12px;height:12px;border-color:var(--green)}
+.tl{top:5px;left:5px;border-top:1px solid;border-left:1px solid}.tr{top:5px;right:5px;border-top:1px solid;border-right:1px solid}.bl{bottom:5px;left:5px;border-bottom:1px solid;border-left:1px solid}.br{bottom:5px;right:5px;border-bottom:1px solid;border-right:1px solid}
+.cam-label{position:absolute;bottom:5px;left:7px;right:7px;display:flex;justify-content:space-between;font-size:8px;color:#b8ffd0}
+.globe-wrap{height:115px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.globe{width:86px;height:86px;border:1px solid #00ff75;border-radius:50%;position:relative;overflow:hidden;box-shadow:0 0 17px #00ff7540,inset 0 0 18px #00ff7530;animation:float 3s ease-in-out infinite}
+.globe:before{content:"";position:absolute;inset:-4px;background:repeating-linear-gradient(90deg,transparent 0 10px,#00ff75aa 11px 12px,transparent 13px 22px);border-radius:50%;animation:spin 5s linear infinite}
+.globe:after{content:"";position:absolute;inset:12px -10px;border:1px solid #00ff75;border-radius:50%;box-shadow:0 0 0 12px #00ff7510,0 0 0 24px #00ff7510}
+.orbit{position:absolute;width:110px;height:38px;border:1px solid #00ff7590;border-radius:50%;transform:rotate(-25deg);animation:spin 7s linear infinite}
+.orbit:after{content:"";position:absolute;width:5px;height:5px;border-radius:50%;background:#d6ffe5;box-shadow:0 0 9px #00ff75;top:4px;left:12px}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes float{50%{transform:translateY(-3px)}}
+.globe-caption{position:absolute;bottom:3px;font-size:8px;color:#80e9a8;letter-spacing:1px}
+.radar{width:110px;height:110px;margin:0 auto;border:1px solid #1d7846;border-radius:50%;position:relative;background:repeating-radial-gradient(circle,transparent 0 16px,#155b35 17px 18px),linear-gradient(90deg,transparent 49.5%,#155b35 50%,transparent 50.5%),linear-gradient(0deg,transparent 49.5%,#155b35 50%,transparent 50.5%)}
+.radar:before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 72%,#00ff7544 88%,transparent 100%);animation:radar 3s linear infinite}
+@keyframes radar{to{transform:rotate(360deg)}}
+.dot{position:absolute;width:4px;height:4px;border-radius:50%;background:#c4ffda;box-shadow:0 0 7px #00ff75}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.metric{background:#04140a;border:1px solid #124529;border-radius:7px;padding:9px}
+.metric small{display:block;color:#6cb88a;font-size:9px}
+.metric strong{font-size:18px;display:block;margin-top:5px}
+.bar{height:4px;background:#12351d;margin-top:7px;border-radius:4px;overflow:hidden}.fill{height:100%;width:0;background:var(--green);box-shadow:0 0 8px var(--green);transition:width .5s}
+.terminal{height:145px;overflow:auto;overflow-wrap:anywhere;color:#8affb2;font-size:10px;line-height:1.8}
+button{font-family:inherit;cursor:pointer;width:100%;padding:12px;margin-top:8px;background:#00e969;color:#001909;border:0;border-radius:6px;font-weight:bold;letter-spacing:.5px}
+button.secondary{background:#07170c;color:#70ffa2;border:1px solid #1b6b3c}
+button:active{transform:scale(.98)}
+.footer{text-align:center;color:#397d53;font-size:9px;margin:15px 0 5px}
+.blink{animation:blink 1s steps(2,start) infinite}@keyframes blink{to{visibility:hidden}}
+#matrix{height:50px;overflow:hidden;word-break:break-all;font-size:9px;color:#39b96c;line-height:1.5}
+@media(min-width:600px){body{max-width:760px;margin:auto;padding:20px}.camera,.globe-wrap{height:145px}.globe{width:105px;height:105px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="sub">◈ SECURE DIGITAL ENVIRONMENT ◈</div>
+  <div class="brand">SHADOW</div>
+  <div>HACKER TERMINAL <span style="color:#fff">/</span> v2.0</div>
+  <div class="pill"><span class="blink">●</span> SYSTEM ONLINE — VISUAL SIMULATION</div>
+</header>
+
+<div class="grid">
+  <section class="panel">
+    <h3>▣ CAM 01 / LIVE FEED</h3>
+    <div class="camera">
+      <div class="cam-scene"><div class="cam-hall"><div class="cam-door"></div></div></div>
+      <div class="scanline"></div>
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="cam-label"><span>CAM-01</span><span id="camtime">00:00:00</span><span>SIMULATED</span></div>
+    </div>
+    <div class="sub" style="margin-top:7px">SIGNAL: <span style="color:#00ff75">STABLE</span></div>
+  </section>
+
+  <section class="panel">
+    <h3>◎ GLOBAL NETWORK</h3>
+    <div class="globe-wrap">
+      <div class="orbit"></div><div class="globe"></div>
+      <div class="globe-caption">EARTH // ORBITAL VIEW</div>
+    </div>
+    <div class="sub" style="text-align:center">SATELLITE LINK: <span style="color:#00ff75">READY</span></div>
+  </section>
+
+  <section class="panel">
+    <h3>◉ RADAR SCANNER</h3>
+    <div class="radar">
+      <i class="dot" style="top:28%;left:64%"></i>
+      <i class="dot" style="top:66%;left:31%"></i>
+      <i class="dot" style="top:48%;left:78%"></i>
+    </div>
+    <div class="sub" style="text-align:center;margin-top:8px">SWEEP: ACTIVE</div>
+  </section>
+
+  <section class="panel">
+    <h3>▤ SYSTEM METRICS</h3>
+    <div class="metrics">
+      <div class="metric"><small>CPU LOAD</small><strong><span id="cpu">24</span>%</strong><div class="bar"><div id="cpubar" class="fill"></div></div></div>
+      <div class="metric"><small>MEMORY</small><strong><span id="mem">48</span>%</strong><div class="bar"><div id="membar" class="fill"></div></div></div>
+      <div class="metric"><small>PACKETS</small><strong id="packets">00842</strong></div>
+      <div class="metric"><small>THREATS</small><strong style="color:#ffca58">00</strong></div>
+    </div>
+  </section>
+</div>
+
+<section class="panel">
+  <h3>▸ DIGITAL MATRIX</h3>
+  <div id="matrix"></div>
+</section>
+
+<section class="panel">
+  <h3>▸ TERMINAL OUTPUT</h3>
+  <div class="terminal" id="output">[BOOT] SHADOW terminal v2.0<br>[OK] Visual modules initialized<br>[OK] Camera simulation online<br>[OK] Globe animation online<br>[READY] Awaiting command<span class="blink">_</span></div>
+  <button onclick="runScan()">▶ START SYSTEM SCAN</button>
+  <button class="secondary" onclick="generateCode()">⌘ GENERATE RANDOM CODE</button>
+  <button class="secondary" onclick="toggleAlert()">⚠ TOGGLE ALERT MODE</button>
+  <button class="secondary" onclick="clearLog()">CLEAR TERMINAL</button>
+</section>
+<div class="footer">SHADOW HACKER // VISUAL DEMO ONLY // NO REAL SURVEILLANCE OR NETWORK SCANNING</div>
+<script>
+const out=document.getElementById('output');
+const chars='010101101010110010101ABCDEF<>/{}[]#$';
+function log(t){out.innerHTML+= '<br>> '+t;out.scrollTop=out.scrollHeight}
+function runScan(){
+  log('Starting local visual diagnostics...');
+  let p=0;const bar=document.getElementById('cpubar');
+  const btns=document.querySelectorAll('button');btns[0].disabled=true;
+  const timer=setInterval(()=>{
+    p+=10;document.getElementById('membar').style.width=p+'%';
+    log('Diagnostic simulation: '+p+'%');
+    if(p>=100){clearInterval(timer);log('Simulation completed successfully. No real devices accessed.');btns[0].disabled=false}
+  },250)
+}
+function generateCode(){
+  let s='';for(let i=0;i<76;i++)s+=chars[Math.floor(Math.random()*chars.length)];
+  log('Generated visual token: '+s)
+}
+function clearLog(){out.innerHTML='> Terminal cleared.'}
+let alertMode=false;
+function toggleAlert(){
+  alertMode=!alertMode;
+  document.documentElement.style.setProperty('--green',alertMode?'#ff4545':'#00ff75');
+  log('Visual alert mode '+(alertMode?'ACTIVATED':'DEACTIVATED'))
+}
+function matrix(){
+  let s='';for(let i=0;i<260;i++)s+=chars[Math.floor(Math.random()*chars.length)];
+  document.getElementById('matrix').textContent=s
+}
+function update(){
+  const cpu=Math.floor(Math.random()*55+15),mem=Math.floor(Math.random()*40+35);
+  document.getElementById('cpu').textContent=cpu;
+  document.getElementById('mem').textContent=mem;
+  document.getElementById('cpubar').style.width=cpu+'%';
+  document.getElementById('membar').style.width=mem+'%';
+  document.getElementById('packets').textContent=String(Math.floor(Math.random()*90000)).padStart(5,'0');
+  document.getElementById('camtime').textContent=new Date().toLocaleTimeString('en-GB');
+}
+matrix();update();setInterval(matrix,180);setInterval(update,1400);
+</script>
+</body>
+</html>
